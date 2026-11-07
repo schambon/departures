@@ -1,0 +1,22 @@
+[Unit]
+Description=Next departures web page
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+User=departures
+Group=departures
+WorkingDirectory=/opt/departures
+# Holds PRIM_API_KEY and BIND_HOST. Root-only (0600); systemd reads it before dropping privileges.
+EnvironmentFile=/etc/departures.env
+ExecStart=/usr/bin/python3 /opt/departures/departures.py --serve --host ${BIND_HOST} --port 8080
+# If the Tailscale address is not up yet at boot, the bind fails and we retry.
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+{
+  "station": "Châtelet - Les Halles (RER A, westbound)",
+  "monitoring_ref": "STIF:StopArea:SP:45102:",
+  "line_ref": "STIF:Line::C01742:",
+  "quays": ["STIF:StopPoint:Q:473921:"],
+  "count": 6
+}

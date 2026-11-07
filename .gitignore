@@ -1,0 +1,22 @@
+# Personal config (home station)
+config.json
+
+# Secrets
+.env
+*.env
+!deploy/departures.env.example
+*.pem
+*.key
+
+# Build artifacts / caches
+dist/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
